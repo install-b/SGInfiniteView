@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A77909571DE1ADB10004D0D3 /* SGInfiniteView.m in Sources */ = {isa = PBXBuildFile; fileRef = A77909561DE1ADB10004D0D3 /* SGInfiniteView.m */; };
+		186024F36A237A4AA9C1D53B /* libPods-InfiniteViewDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 916EEF96E8BC409F25B18AE7 /* libPods-InfiniteViewDemo.a */; };
 		A7EAE4101DDF336D002EAC72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EAE40F1DDF336D002EAC72 /* main.m */; };
 		A7EAE4131DDF336D002EAC72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EAE4121DDF336D002EAC72 /* AppDelegate.m */; };
 		A7EAE41B1DDF336D002EAC72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7EAE41A1DDF336D002EAC72 /* Assets.xcassets */; };
@@ -22,8 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A77909551DE1ADB10004D0D3 /* SGInfiniteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGInfiniteView.h; sourceTree = "<group>"; };
-		A77909561DE1ADB10004D0D3 /* SGInfiniteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGInfiniteView.m; sourceTree = "<group>"; };
+		089A43D8FBD30E5B84D4813B /* Pods-InfiniteViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfiniteViewDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InfiniteViewDemo/Pods-InfiniteViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		5AB97BFF895CDC0F8D7AAA4E /* Pods-InfiniteViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfiniteViewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-InfiniteViewDemo/Pods-InfiniteViewDemo.release.xcconfig"; sourceTree = "<group>"; };
+		916EEF96E8BC409F25B18AE7 /* libPods-InfiniteViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InfiniteViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7EAE40B1DDF336D002EAC72 /* InfiniteViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7EAE40F1DDF336D002EAC72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A7EAE4111DDF336D002EAC72 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -52,28 +53,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				186024F36A237A4AA9C1D53B /* libPods-InfiniteViewDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A77909541DE1AD780004D0D3 /* podFiles */ = {
+		3DEB2EA13A09BA542B255F56 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A77909551DE1ADB10004D0D3 /* SGInfiniteView.h */,
-				A77909561DE1ADB10004D0D3 /* SGInfiniteView.m */,
+				089A43D8FBD30E5B84D4813B /* Pods-InfiniteViewDemo.debug.xcconfig */,
+				5AB97BFF895CDC0F8D7AAA4E /* Pods-InfiniteViewDemo.release.xcconfig */,
 			);
-			name = podFiles;
-			path = InfiniteViewDemo/podFiles;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		A7EAE4021DDF336D002EAC72 = {
 			isa = PBXGroup;
 			children = (
-				A77909541DE1AD780004D0D3 /* podFiles */,
 				A7EAE40D1DDF336D002EAC72 /* InfiniteViewDemo */,
 				A7EAE40C1DDF336D002EAC72 /* Products */,
+				3DEB2EA13A09BA542B255F56 /* Pods */,
+				C3E35EDF071B9F092E3468AC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +146,14 @@
 			name = subVc;
 			sourceTree = "<group>";
 		};
+		C3E35EDF071B9F092E3468AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				916EEF96E8BC409F25B18AE7 /* libPods-InfiniteViewDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -151,9 +161,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A7EAE4221DDF336D002EAC72 /* Build configuration list for PBXNativeTarget "InfiniteViewDemo" */;
 			buildPhases = (
+				11F4F3A3852C85775413DBE5 /* [CP] Check Pods Manifest.lock */,
 				A7EAE4071DDF336D002EAC72 /* Sources */,
 				A7EAE4081DDF336D002EAC72 /* Frameworks */,
 				A7EAE4091DDF336D002EAC72 /* Resources */,
+				90C8FCC8D5AC67D3B0BCB765 /* [CP] Embed Pods Frameworks */,
+				BEE607BD5B6A59B6E9A9A9AA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -209,6 +222,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		11F4F3A3852C85775413DBE5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		90C8FCC8D5AC67D3B0BCB765 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InfiniteViewDemo/Pods-InfiniteViewDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEE607BD5B6A59B6E9A9A9AA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InfiniteViewDemo/Pods-InfiniteViewDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A7EAE4071DDF336D002EAC72 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -219,7 +280,6 @@
 				A7EAE4291DDF33EC002EAC72 /* RootTableViewController.m in Sources */,
 				A7EAE4381DDF3A26002EAC72 /* SecondViewController.m in Sources */,
 				A7EAE43E1DDF3A7A002EAC72 /* ThirdViewController.m in Sources */,
-				A77909571DE1ADB10004D0D3 /* SGInfiniteView.m in Sources */,
 				A7EAE4421DDF3AEF002EAC72 /* InfiniteViewController.m in Sources */,
 				A7EAE4131DDF336D002EAC72 /* AppDelegate.m in Sources */,
 				A7EAE4101DDF336D002EAC72 /* main.m in Sources */,
@@ -333,6 +393,7 @@
 		};
 		A7EAE4231DDF336D002EAC72 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 089A43D8FBD30E5B84D4813B /* Pods-InfiniteViewDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = InfiniteViewDemo/Info.plist;
@@ -345,6 +406,7 @@
 		};
 		A7EAE4241DDF336D002EAC72 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AB97BFF895CDC0F8D7AAA4E /* Pods-InfiniteViewDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = InfiniteViewDemo/Info.plist;

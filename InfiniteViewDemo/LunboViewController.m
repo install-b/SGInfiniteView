@@ -7,7 +7,7 @@
 //
 
 #import "LunboViewController.h"
-#import "SGInfiniteView.h"
+#import <SGInfiniteView/SGInfiniteView.h>
 @interface LunboViewController () <SGInfiniteViewDatasource>
 
 @property(nonatomic, weak) SGInfiniteView *lunboView;

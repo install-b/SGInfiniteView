@@ -11,7 +11,7 @@
 #import "SecondViewController.h"
 #import "ThirdViewController.h"
 
-#import "SGInfiniteView.h"
+#import <SGInfiniteView/SGInfiniteView.h>
 
 @interface InfiniteViewController ()<SGInfiniteViewDelegte,SGInfiniteViewDatasource>
 
