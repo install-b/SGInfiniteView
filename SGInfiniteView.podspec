@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SGInfiniteView"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "An iOS inifite scroll view"
 
   # This description is used to generate tags and improve search results.
@@ -80,7 +80,7 @@ SGInfiniteView is an infinite scroll view control with unlimited switching back 
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/install-b/SGInfiniteView.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/install-b/SGInfiniteView.git", :tag => "0.0.2" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
