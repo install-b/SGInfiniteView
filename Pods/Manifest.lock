@@ -1,0 +1,12 @@
+PODS:
+  - SGInfiniteView (0.0.1)
+
+DEPENDENCIES:
+  - SGInfiniteView
+
+SPEC CHECKSUMS:
+  SGInfiniteView: 5a0a94051408ec47bfe3f51e7b81022ef9f153b5
+
+PODFILE CHECKSUM: 755728218660e0ea5fa082aededcd3cccbaa3729
+
+COCOAPODS: 1.1.1
