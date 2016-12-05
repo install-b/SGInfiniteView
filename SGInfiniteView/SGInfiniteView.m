@@ -90,6 +90,7 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 // 重写frame
 - (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
+    [self.collectionView  setFrame:self.bounds];
     self.layout.itemSize = CGSizeMake(frame.size.width + self.pageMargin, frame.size.height);
     [self.collectionView reloadData];
 }
