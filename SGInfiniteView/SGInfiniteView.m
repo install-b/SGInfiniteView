@@ -7,13 +7,14 @@
 //
 
 #import "SGInfiniteView.h"
+#import "SGCollectionView.h"
 
 @interface SGInfiniteView () <UICollectionViewDataSource, UICollectionViewDelegate>
 /** laout布局 重新发生尺寸变化时layout 的itemsize 也要发生改变 */
 @property (nonatomic,strong) UICollectionViewFlowLayout *layout;
 
 /** collectionView */
-@property (nonatomic,weak) UICollectionView *collectionView;
+@property (nonatomic,weak) SGCollectionView *collectionView;
 
 /** 滚动的item个数 */
 @property (nonatomic,assign) NSInteger itemsCount;
@@ -46,6 +47,7 @@
 
 static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 
+#pragma mark - life cycle
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self setup];
@@ -72,38 +74,30 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 }
 #pragma mark - 初始化
 - (void)setup {
-    self.layout.itemSize = CGSizeMake(self.bounds.size.width + self.pageMargin, self.bounds.size.height);
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:self.layout];
+    self.layout.itemSize = self.bounds.size;
+    SGCollectionView *collectionView = [[SGCollectionView alloc] initWithFrame:self.bounds collectionViewLayout:self.layout];
     
     [self addSubview:collectionView];
     self.collectionView = collectionView;
-    self.collectionView.showsHorizontalScrollIndicator = NO;
-    self.collectionView.backgroundColor = [UIColor clearColor];
     [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ID];
     
     collectionView.dataSource = self;
     collectionView.delegate = self;
-    collectionView.pagingEnabled = YES;
 }
 
 #pragma mark - 设置控件 setter 重写
 // 重写frame
 - (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
-
-    [self.collectionView  setFrame:self.bounds];
-
-    self.layout.itemSize = CGSizeMake(frame.size.width + self.pageMargin, frame.size.height);
-    [self.collectionView reloadData];
+    _collectionView.frame = self.bounds;
+    self.layout.itemSize = _collectionView.frame.size;
+    [_collectionView reloadData];
 }
 
 // 设置间距
 - (void)setPageMargin:(CGFloat)pageMargin {
-    
-    _pageMargin = pageMargin;
-
-     self.layout.minimumLineSpacing = self.pageMargin;
-    
+    _collectionView.pageMargin = pageMargin;
+    self.layout.itemSize = _collectionView.frame.size;
     [self.collectionView reloadData];
 }
 
@@ -123,12 +117,12 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
 }
 
-- (void)yq_reloadData {
+- (void)sg_reloadData {
     self.viewCount  = 0;
     self.itemsCount = 0;
     [self.collectionView reloadData];
 }
-#pragma mark -
+#pragma mark - 计算
 - (NSInteger)scrollToItemIndexWithIndex:(NSInteger)index {
     
     if (self.viewCount < 3) {
@@ -159,13 +153,10 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     if(itemIndex >= self.viewCount * 2) {
         return self.viewCount * 2 + index;
     }
-    
     return index;
 }
 
-
 #pragma mark - UICollectionViewDataSource
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.itemsCount;
 }
@@ -173,14 +164,12 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     UICollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
-    
+
     [cell.contentView.subviews.lastObject removeFromSuperview];
-    
     [cell.contentView addSubview:[self currentViewInIndex:indexPath.item % self.viewCount]];
 
     return cell;
 }
-
 
 #pragma mark - UICollectionViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -241,17 +230,17 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     }
 }
 
-#pragma mark 定时器处理
+#pragma mark 定时器处理 scroll View delegate
 // 手动拽动控件定时器停止
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    if (self.timer) {
-        self.shouldStartTimer = YES;
+    if (_timer) {
+        _shouldStartTimer = YES;
         [self suspandTimer];
     }
 }
 // 停止拽动如果有开启定时器则继续开启定时器
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (self.shouldStartTimer) {
+    if (_shouldStartTimer) {
         [self startTimerScrollWithDuration:self.duration];
     }
 }
@@ -294,10 +283,8 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
             _viewCount = [self.dataSource numberOfItemsForInfiniteSlideView:self];
         }
     }
-    
     return _viewCount;
 }
-
 
 - (NSInteger)itemsCount {
     // 容错处理
@@ -310,14 +297,15 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     }
     return self.viewCount * 3;
 }
-
+// 获取当前视图（展示给用户的界面）索引
 - (NSInteger)indexForCurrentView {
     return (NSInteger)(self.collectionView.contentOffset.x / self.frame.size.width) % self.viewCount;
 }
+// 获取当前collectionView（内部）的索引
 - (NSInteger)currentItemIndex {
     return [_collectionView indexPathForCell:_collectionView.visibleCells.firstObject].item;
 }
-
+// 根据索引获取视图
 - (UIView *)currentViewInIndex:(NSInteger)index {
     if ([self.dataSource respondsToSelector:@selector(viewForInfiniteSlideView: inIndex:)]) {
         UIView * view = [self.dataSource viewForInfiniteSlideView:self inIndex:index];
