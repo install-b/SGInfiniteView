@@ -29,8 +29,6 @@
     [self setUpChildVcs];
     // 添加子控件
     [self setUpSubViews];
-    
-    self.view.backgroundColor = [UIColor grayColor];
 }
 - (void)setUpChildVcs {
     FirstViewController *firstVc = [[FirstViewController alloc] init];
@@ -50,6 +48,7 @@
     
     // 初始化标题栏
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, screenW, 44)];
+    titleView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:titleView];
     
     UISegmentedControl *segmentC = [[UISegmentedControl alloc] initWithItems:@[@"first",@"second",@"third"]];
@@ -61,7 +60,7 @@
     
     // 初始化无限滚动控件
     SGInfiniteView *infiniteView = [[SGInfiniteView alloc] initWithFrame:CGRectMake(0, 44 + 64, screenW, screenH - 44)];
-    infiniteView.pageMargin = 10;
+    [infiniteView setPageMargin:20];
     infiniteView.dataSource = self;
     infiniteView.delegate = self;
     

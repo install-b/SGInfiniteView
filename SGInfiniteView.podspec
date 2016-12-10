@@ -80,7 +80,7 @@ SGInfiniteView is an infinite scroll view control with unlimited switching back 
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/install-b/SGInfiniteView.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/install-b/SGInfiniteView.git", :tag => "0.0.2" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

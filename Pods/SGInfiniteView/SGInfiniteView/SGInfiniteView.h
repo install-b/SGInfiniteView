@@ -42,9 +42,9 @@
 /** delegate（代理） */
 @property (nonatomic,weak) id <SGInfiniteViewDelegte> delegate;
 
-/** 设置分页间距（默认为0） */
-@property (nonatomic,assign) CGFloat pageMargin;
-
+///** 设置分页间距（默认为0） */
+//@property (nonatomic,assign) CGFloat pageMargin;
+- (void)setPageMargin:(CGFloat)pageMargin;
 
 /***  轮播到下一个视图 **/
 - (void)scrollToNextItem;

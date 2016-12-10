@@ -11,6 +11,7 @@
 		4FDDFCD1BB3151812E084595C65C0D19 /* Pods-InfiniteViewDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEFE09C900C83AD328E4FE6B71B60F1 /* Pods-InfiniteViewDemo-dummy.m */; };
 		66117DEDEE9085790166FB934712503E /* SGInfiniteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC5C7E4B6CACC2B45D8A7B193F8DEF9 /* SGInfiniteView.m */; };
 		7F367FAF71BA450472C275C0B99AFE12 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */; };
+		A73A2F001DFBAAFA0048B58E /* SGCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A73A2EFF1DFBAAFA0048B58E /* SGCollectionView.m */; };
 		AA03D721AEB7962B4447EC81C531EF28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
 		B57680A066D8B14682CFB07964EA2963 /* SGInfiniteView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EB50BCE29CF75A21005DD494998092A9 /* SGInfiniteView-dummy.m */; };
 		BDD75D8ADF8A2D85C78F3D712438BC13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
@@ -27,13 +28,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0663BBF6D8BC4EC8FE450382CF87D1E5 /* libPods-InfiniteViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-InfiniteViewDemo.a"; path = "libPods-InfiniteViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0663BBF6D8BC4EC8FE450382CF87D1E5 /* libPods-InfiniteViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InfiniteViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EC5C7E4B6CACC2B45D8A7B193F8DEF9 /* SGInfiniteView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SGInfiniteView.m; path = SGInfiniteView/SGInfiniteView.m; sourceTree = "<group>"; };
 		14EEA0B3EDD3184CD203916D37749EA6 /* Pods-InfiniteViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-InfiniteViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		26B80A818595C1AF9249A61BD8093EAD /* Pods-InfiniteViewDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-InfiniteViewDemo-acknowledgements.plist"; sourceTree = "<group>"; };
 		2A01ABED579E513EAA02C46A217781A6 /* Pods-InfiniteViewDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-InfiniteViewDemo-frameworks.sh"; sourceTree = "<group>"; };
 		2E6E35CF6A72C81F6E09BF625FC043C0 /* SGInfiniteView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SGInfiniteView.xcconfig; sourceTree = "<group>"; };
-		317E08F4F49ED1501CB9B05C5A51F670 /* libSGInfiniteView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSGInfiniteView.a; path = libSGInfiniteView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		317E08F4F49ED1501CB9B05C5A51F670 /* libSGInfiniteView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSGInfiniteView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		38615FE6BB3F81BCD52F858055DA2144 /* Pods-InfiniteViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-InfiniteViewDemo.release.xcconfig"; sourceTree = "<group>"; };
 		3D6B5D0FEBC81F0D9BA6D8B041030D3A /* SGInfiniteView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SGInfiniteView-prefix.pch"; sourceTree = "<group>"; };
 		5832EA8AA5933CDC4774EEB07A4AB7F1 /* SGInfiniteView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SGInfiniteView.h; path = SGInfiniteView/SGInfiniteView.h; sourceTree = "<group>"; };
@@ -41,7 +42,9 @@
 		616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		77E1B2E4BE4D7FA00F1752A222F9204C /* Pods-InfiniteViewDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-InfiniteViewDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
 		7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A73A2EFE1DFBAAFA0048B58E /* SGCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGCollectionView.h; path = SGInfiniteView/SGCollectionView.h; sourceTree = "<group>"; };
+		A73A2EFF1DFBAAFA0048B58E /* SGCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGCollectionView.m; path = SGInfiniteView/SGCollectionView.m; sourceTree = "<group>"; };
 		C035AC411FAEF2B59C239323EA8C9786 /* Pods-InfiniteViewDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-InfiniteViewDemo-resources.sh"; sourceTree = "<group>"; };
 		EB50BCE29CF75A21005DD494998092A9 /* SGInfiniteView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SGInfiniteView-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,9 +154,10 @@
 			children = (
 				5832EA8AA5933CDC4774EEB07A4AB7F1 /* SGInfiniteView.h */,
 				0EC5C7E4B6CACC2B45D8A7B193F8DEF9 /* SGInfiniteView.m */,
+				A73A2EFE1DFBAAFA0048B58E /* SGCollectionView.h */,
+				A73A2EFF1DFBAAFA0048B58E /* SGCollectionView.m */,
 				EDB175F9987952A44E47C27109C7DA3D /* Support Files */,
 			);
-			name = SGInfiniteView;
 			path = SGInfiniteView;
 			sourceTree = "<group>";
 		};
@@ -246,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A73A2F001DFBAAFA0048B58E /* SGCollectionView.m in Sources */,
 				4FDDFCD1BB3151812E084595C65C0D19 /* Pods-InfiniteViewDemo-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
