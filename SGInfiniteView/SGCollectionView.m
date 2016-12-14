@@ -21,6 +21,7 @@
     self.backgroundColor = [UIColor clearColor];
     self.pagingEnabled = YES;
     self.allowsSelection = NO;
+    self.showsHorizontalScrollIndicator = NO;
 }
 
 

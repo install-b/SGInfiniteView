@@ -1,11 +1,11 @@
 PODS:
-  - SGInfiniteView (0.0.1)
+  - SGInfiniteView (0.0.3)
 
 DEPENDENCIES:
   - SGInfiniteView
 
 SPEC CHECKSUMS:
-  SGInfiniteView: 5a0a94051408ec47bfe3f51e7b81022ef9f153b5
+  SGInfiniteView: d035d8c75e0bccc9eb671f8cce9decb8586d3659
 
 PODFILE CHECKSUM: 755728218660e0ea5fa082aededcd3cccbaa3729
 

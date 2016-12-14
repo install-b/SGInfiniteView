@@ -14,11 +14,7 @@
 @property (nonatomic,strong) UICollectionViewFlowLayout *layout;
 
 /** collectionView */
-//@property (nonatomic,weak) UICollectionView *collectionView;
-
-/** collectionView */
 @property (nonatomic,weak) SGCollectionView *collectionView;
-
 
 /** 滚动的item个数 */
 @property (nonatomic,assign) NSInteger itemsCount;
@@ -121,7 +117,7 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
 }
 
-- (void)yq_reloadData {
+- (void)sg_reloadData {
     self.viewCount  = 0;
     self.itemsCount = 0;
     [self.collectionView reloadData];

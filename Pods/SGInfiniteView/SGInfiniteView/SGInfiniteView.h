@@ -42,8 +42,7 @@
 /** delegate（代理） */
 @property (nonatomic,weak) id <SGInfiniteViewDelegte> delegate;
 
-///** 设置分页间距（默认为0） */
-//@property (nonatomic,assign) CGFloat pageMargin;
+//** 设置分页间距（默认为0） */
 - (void)setPageMargin:(CGFloat)pageMargin;
 
 /***  轮播到下一个视图 **/
@@ -56,7 +55,7 @@
 - (NSInteger)indexForCurrentView;
 
 /** 手动刷新数据源 */
-- (void)yq_reloadData;
+- (void)sg_reloadData;
 
 /** 开启定时器 滚动 duration:滚动时间间隔 （注意：一旦有开启就要有结束否则会发生错误）*/
 - (void)startTimerScrollWithDuration:(NSTimeInterval)duration;
