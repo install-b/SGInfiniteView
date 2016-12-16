@@ -1,15 +1,15 @@
+////
+////  SGCollectionView.h
+////  Pods
+////
+////  Created by Shangen Zhang on 16/12/10.
+////
+////
 //
-//  SGCollectionView.h
-//  Pods
+//#import <UIKit/UIKit.h>
 //
-//  Created by Shangen Zhang on 16/12/10.
+//@interface SGCollectionView : UICollectionView
 //
+//@property(nonatomic,assign) CGFloat pageMargin;
 //
-
-#import <UIKit/UIKit.h>
-
-@interface SGCollectionView : UICollectionView
-
-@property(nonatomic,assign) CGFloat pageMargin;
-
-@end
+//@end

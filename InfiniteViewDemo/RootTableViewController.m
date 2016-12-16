@@ -28,6 +28,7 @@ static NSString *cellId = @"cellId";
         _dataSource = @[
                         @{title:@"轮播广告", viewController:@"LunboViewController"},
                         @{title:@"无限滚动", viewController:@"InfiniteViewController"},
+                        @{title:@"重用cell",viewController:@"SGReuseViewController"},
                         ];
     }
     
