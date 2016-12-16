@@ -7,79 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4FDDFCD1BB3151812E084595C65C0D19 /* Pods-InfiniteViewDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEFE09C900C83AD328E4FE6B71B60F1 /* Pods-InfiniteViewDemo-dummy.m */; };
-		7F367FAF71BA450472C275C0B99AFE12 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */; };
-		AA03D721AEB7962B4447EC81C531EF28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
-		B77931A974AD192A25CF993AFFC79F95 /* SGInfiniteView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC9D6E90C929C2F4C9CF12404EAF2A5D /* SGInfiniteView-dummy.m */; };
-		BDD75D8ADF8A2D85C78F3D712438BC13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		1CB50224C425BBE67811553C004EB162 /* Pods-InfiniteViewDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEFE09C900C83AD328E4FE6B71B60F1 /* Pods-InfiniteViewDemo-dummy.m */; };
+		26B7FE5E52774E8A55600F146FD74E7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		E9951AB1FB8C11EC3B2BDF4713C1CBB0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1BB4B4C13D2684F563B78889FAC88215;
-			remoteInfo = SGInfiniteView;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		0663BBF6D8BC4EC8FE450382CF87D1E5 /* libPods-InfiniteViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InfiniteViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0BB1226F025EC3971189D59DF8E1621E /* SGInfiniteView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SGInfiniteView.xcconfig; sourceTree = "<group>"; };
-		0BE246EB6DC76312ED1FB32C35BD787C /* SGInfiniteView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SGInfiniteView-prefix.pch"; sourceTree = "<group>"; };
 		14EEA0B3EDD3184CD203916D37749EA6 /* Pods-InfiniteViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-InfiniteViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		14F6EC5C7308AAA7F0C940E986151EEC /* SGInfiniteView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SGInfiniteView.h; path = SGInfiniteView/SGInfiniteView.h; sourceTree = "<group>"; };
 		26B80A818595C1AF9249A61BD8093EAD /* Pods-InfiniteViewDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-InfiniteViewDemo-acknowledgements.plist"; sourceTree = "<group>"; };
 		2A01ABED579E513EAA02C46A217781A6 /* Pods-InfiniteViewDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-InfiniteViewDemo-frameworks.sh"; sourceTree = "<group>"; };
-		317E08F4F49ED1501CB9B05C5A51F670 /* libSGInfiniteView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSGInfiniteView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		38615FE6BB3F81BCD52F858055DA2144 /* Pods-InfiniteViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-InfiniteViewDemo.release.xcconfig"; sourceTree = "<group>"; };
 		5CEFE09C900C83AD328E4FE6B71B60F1 /* Pods-InfiniteViewDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-InfiniteViewDemo-dummy.m"; sourceTree = "<group>"; };
-		613C443415EF15E7EF41B9BA1E9D9FE5 /* SGCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SGCollectionView.m; path = SGInfiniteView/SGCollectionView.m; sourceTree = "<group>"; };
-		616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		6E65FA21B93474CA35E099AA57A3B15D /* SGInfiniteView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SGInfiniteView.m; path = SGInfiniteView/SGInfiniteView.m; sourceTree = "<group>"; };
 		77E1B2E4BE4D7FA00F1752A222F9204C /* Pods-InfiniteViewDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-InfiniteViewDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		84B66E821E037EA100DA65E5 /* SGInfiniteViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGInfiniteViewCell.h; path = SGInfiniteView/SGInfiniteViewCell.h; sourceTree = "<group>"; };
-		84B66E831E037EA100DA65E5 /* SGInfiniteViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGInfiniteViewCell.m; path = SGInfiniteView/SGInfiniteViewCell.m; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		AC9D6E90C929C2F4C9CF12404EAF2A5D /* SGInfiniteView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SGInfiniteView-dummy.m"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BB452337A8B6B7B026C584810D51961A /* libPods-InfiniteViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-InfiniteViewDemo.a"; path = "libPods-InfiniteViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C035AC411FAEF2B59C239323EA8C9786 /* Pods-InfiniteViewDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-InfiniteViewDemo-resources.sh"; sourceTree = "<group>"; };
-		FA45B95B52D9DCF451AA79FE114599D0 /* SGCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SGCollectionView.h; path = SGInfiniteView/SGCollectionView.h; sourceTree = "<group>"; };
+		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		408088964107562FE41BCB46F45FC9AE /* Frameworks */ = {
+		E997CE45AF29709E06ABBAADED7B8684 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDD75D8ADF8A2D85C78F3D712438BC13 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		861E220CF021F81F0FFDFC25105230C5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AA03D721AEB7962B4447EC81C531EF28 /* Foundation.framework in Frameworks */,
-				7F367FAF71BA450472C275C0B99AFE12 /* UIKit.framework in Frameworks */,
+				26B7FE5E52774E8A55600F146FD74E7C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04A86B9EF8FD84EE12627E87694D9BBA /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				0BB1226F025EC3971189D59DF8E1621E /* SGInfiniteView.xcconfig */,
-				AC9D6E90C929C2F4C9CF12404EAF2A5D /* SGInfiniteView-dummy.m */,
-				0BE246EB6DC76312ED1FB32C35BD787C /* SGInfiniteView-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SGInfiniteView";
-			sourceTree = "<group>";
-		};
 		04CCC9E7DBF4105E1D3DC95F071A9ECD /* Pods-InfiniteViewDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,52 +51,20 @@
 			path = "Target Support Files/Pods-InfiniteViewDemo";
 			sourceTree = "<group>";
 		};
-		370D4DA355A014D132F1459DEF3D5BFB /* SGInfiniteView */ = {
+		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				FA45B95B52D9DCF451AA79FE114599D0 /* SGCollectionView.h */,
-				613C443415EF15E7EF41B9BA1E9D9FE5 /* SGCollectionView.m */,
-				14F6EC5C7308AAA7F0C940E986151EEC /* SGInfiniteView.h */,
-				6E65FA21B93474CA35E099AA57A3B15D /* SGInfiniteView.m */,
-				84B66E821E037EA100DA65E5 /* SGInfiniteViewCell.h */,
-				84B66E831E037EA100DA65E5 /* SGInfiniteViewCell.m */,
-				04A86B9EF8FD84EE12627E87694D9BBA /* Support Files */,
+				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
 			);
-			path = SGInfiniteView;
-			sourceTree = "<group>";
-		};
-		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E6EE98446B568159EE277B68FD442AF0 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4B590FD037D911D9B6D39C12A154D50A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0663BBF6D8BC4EC8FE450382CF87D1E5 /* libPods-InfiniteViewDemo.a */,
-				317E08F4F49ED1501CB9B05C5A51F670 /* libSGInfiniteView.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		6D5C37FFF4CDDBD7EEFED2B686CC946F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				370D4DA355A014D132F1459DEF3D5BFB /* SGInfiniteView */,
-			);
-			name = Pods;
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
-				6D5C37FFF4CDDBD7EEFED2B686CC946F /* Pods */,
-				4B590FD037D911D9B6D39C12A154D50A /* Products */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				F601D155AC31DBE1544F43862C8065F7 /* Products */,
 				84201A0AD3F06C21458AA45DB7FFAF63 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -153,60 +77,39 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		E6EE98446B568159EE277B68FD442AF0 /* iOS */ = {
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */,
-				7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */,
+				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
 			);
-			name = iOS;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F601D155AC31DBE1544F43862C8065F7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BB452337A8B6B7B026C584810D51961A /* libPods-InfiniteViewDemo.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		BC019B633435127B4B2FE641C14DCA9F /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		1BB4B4C13D2684F563B78889FAC88215 /* SGInfiniteView */ = {
+		18ADB4D6D049338F79A138167EA82B67 /* Pods-InfiniteViewDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C8736DDEEE3F7636B943B2EBF7C31F42 /* Build configuration list for PBXNativeTarget "SGInfiniteView" */;
+			buildConfigurationList = DAC249CC9617234708C5B7E116105242 /* Build configuration list for PBXNativeTarget "Pods-InfiniteViewDemo" */;
 			buildPhases = (
-				FD76B08ECCB7802B943859CC5A22E885 /* Sources */,
-				861E220CF021F81F0FFDFC25105230C5 /* Frameworks */,
-				BC019B633435127B4B2FE641C14DCA9F /* Headers */,
+				519C98CBC9E93DD98023E93794741E10 /* Sources */,
+				E997CE45AF29709E06ABBAADED7B8684 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			name = SGInfiniteView;
-			productName = SGInfiniteView;
-			productReference = 317E08F4F49ED1501CB9B05C5A51F670 /* libSGInfiniteView.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		87EB90DEABAD1F24131108519E9A14C3 /* Pods-InfiniteViewDemo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C93667E0A5B99DD2D572C2FF8A078F7A /* Build configuration list for PBXNativeTarget "Pods-InfiniteViewDemo" */;
-			buildPhases = (
-				6E26621F0D66654A6EF459016F5CBF1C /* Sources */,
-				408088964107562FE41BCB46F45FC9AE /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4BBB28E0C939A9C0DC8EC8F88E19E057 /* PBXTargetDependency */,
 			);
 			name = "Pods-InfiniteViewDemo";
 			productName = "Pods-InfiniteViewDemo";
-			productReference = 0663BBF6D8BC4EC8FE450382CF87D1E5 /* libPods-InfiniteViewDemo.a */;
+			productReference = BB452337A8B6B7B026C584810D51961A /* libPods-InfiniteViewDemo.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -226,43 +129,25 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 4B590FD037D911D9B6D39C12A154D50A /* Products */;
+			productRefGroup = F601D155AC31DBE1544F43862C8065F7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				87EB90DEABAD1F24131108519E9A14C3 /* Pods-InfiniteViewDemo */,
-				1BB4B4C13D2684F563B78889FAC88215 /* SGInfiniteView */,
+				18ADB4D6D049338F79A138167EA82B67 /* Pods-InfiniteViewDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6E26621F0D66654A6EF459016F5CBF1C /* Sources */ = {
+		519C98CBC9E93DD98023E93794741E10 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FDDFCD1BB3151812E084595C65C0D19 /* Pods-InfiniteViewDemo-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FD76B08ECCB7802B943859CC5A22E885 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B77931A974AD192A25CF993AFFC79F95 /* SGInfiniteView-dummy.m in Sources */,
+				1CB50224C425BBE67811553C004EB162 /* Pods-InfiniteViewDemo-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4BBB28E0C939A9C0DC8EC8F88E19E057 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SGInfiniteView;
-			target = 1BB4B4C13D2684F563B78889FAC88215 /* SGInfiniteView */;
-			targetProxy = E9951AB1FB8C11EC3B2BDF4713C1CBB0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		015A368F878AC3E2CEAE21DDE8026304 /* Debug */ = {
@@ -309,6 +194,29 @@
 			};
 			name = Debug;
 		};
+		39C1602F670B54A5DEDE77B53D9F3C22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14EEA0B3EDD3184CD203916D37749EA6 /* Pods-InfiniteViewDemo.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
 		44CDBB6D11DE06DB64D6268622BDC47E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -349,7 +257,7 @@
 			};
 			name = Release;
 		};
-		6BA2EFD94D3B7FC126006645BB472FCF /* Release */ = {
+		66719DBEFAE204D09C4922CD56BA8D74 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 38615FE6BB3F81BCD52F858055DA2144 /* Pods-InfiniteViewDemo.release.xcconfig */;
 			buildSettings = {
@@ -372,75 +280,6 @@
 			};
 			name = Release;
 		};
-		9CBA940F03EBCC0A505FB0E9B2AA6678 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BB1226F025EC3971189D59DF8E1621E /* SGInfiniteView.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SGInfiniteView/SGInfiniteView-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		B60848BFFE761F65DD04A6D5CC4CA89B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BB1226F025EC3971189D59DF8E1621E /* SGInfiniteView.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SGInfiniteView/SGInfiniteView-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		EBFD254B0F6B079860DE0F9A8FF6C34B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14EEA0B3EDD3184CD203916D37749EA6 /* Pods-InfiniteViewDemo.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -453,20 +292,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C8736DDEEE3F7636B943B2EBF7C31F42 /* Build configuration list for PBXNativeTarget "SGInfiniteView" */ = {
+		DAC249CC9617234708C5B7E116105242 /* Build configuration list for PBXNativeTarget "Pods-InfiniteViewDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9CBA940F03EBCC0A505FB0E9B2AA6678 /* Debug */,
-				B60848BFFE761F65DD04A6D5CC4CA89B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C93667E0A5B99DD2D572C2FF8A078F7A /* Build configuration list for PBXNativeTarget "Pods-InfiniteViewDemo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EBFD254B0F6B079860DE0F9A8FF6C34B /* Debug */,
-				6BA2EFD94D3B7FC126006645BB472FCF /* Release */,
+				39C1602F670B54A5DEDE77B53D9F3C22 /* Debug */,
+				66719DBEFAE204D09C4922CD56BA8D74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

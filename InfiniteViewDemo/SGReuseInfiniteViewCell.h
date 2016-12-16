@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Shangen Zhang. All rights reserved.
 //
 
-#import <SGInfiniteView/SGInfiniteView.h>
+#import "SGInfiniteView/SGInfiniteView.h"
 
 @interface SGReuseInfiniteViewCell : SGInfiniteViewCell
 

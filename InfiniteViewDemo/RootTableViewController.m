@@ -74,9 +74,9 @@ static NSString *cellId = @"cellId";
     // 获取到类对象 创建控制器
     NSString *classString = self.dataSource[index][viewController];
     id pushVc = [[NSClassFromString(classString) alloc] init];
-    
     // 判断是否为控制器
     if ([pushVc isKindOfClass:[UIViewController class]]) {
+        [(UIViewController *)pushVc setTitle:self.dataSource[index][title]];
          [self.navigationController pushViewController:pushVc animated:YES];
     }
 
