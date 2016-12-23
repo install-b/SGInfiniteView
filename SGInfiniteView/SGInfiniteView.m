@@ -116,14 +116,19 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 }
 
 - (void)scrollToIndexItem:(NSInteger)index {
-    
+    [self scrollToIndexItem:index anima:YES];
+}
+
+
+- (void)scrollToIndexItem:(NSInteger)index anima:(BOOL)anima {
     if (self.viewCount < 1 || index < 0) {
         return;
     }
     // 计算索引
     index = [self scrollToItemIndexWithIndex:index % self.viewCount];
     
-    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:anima];
+    
 }
 
 - (void)sg_reloadData {
@@ -191,7 +196,7 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 - (SGInfiniteViewCell *)sg_dequeueReusableCellWithReuseIdentifier:(NSString *)identifier {
     __block NSString *ID = identifier;
     __block SGInfiniteViewCell *cell = nil;
-
+    
     [_reusePool enumerateObjectsUsingBlock:^(id  _Nonnull obj, BOOL * _Nonnull stop) {
         
         if ([[(SGInfiniteViewCell *)obj identifier] isEqualToString:ID]) { // 缓存池中找到cell
@@ -214,7 +219,7 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
         Class class = cellClass;
         cell = [(SGInfiniteViewCell *)[class alloc] init];
         cell.identifier = reuseId;
-    
+        
         return cell;
     }
     return cell; // 没有就返回空
@@ -222,7 +227,7 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 
 #pragma mark - UICollectionViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-   // 代理数据源为0或空时处理 （代理不需要监听时直接返回）
+    // 代理数据源为0或空时处理 （代理不需要监听时直接返回）
     if (![self.delegate respondsToSelector:@selector(viewForInfiniteView:willShowIndex:)]
         || self.viewCount < 1 ) {
         return;
@@ -272,7 +277,7 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     NSInteger newItem = self.viewCount + self.currentViewIndex;
     // 不使用动画效果把scrollView拉回到中间
     [collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:newItem inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
-   
+    
     // 通知代理刚刚已经展示的view索引值
     if ([self.delegate respondsToSelector:@selector(viewForInfiniteView:didShowIndex:)]) {
         [self.delegate viewForInfiniteView:self didShowIndex:self.currentViewIndex];
@@ -300,7 +305,7 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     if (_timer) {
         [self suspandTimer];
     }
-     self.timer = [NSTimer timerWithTimeInterval:duration target:self selector:@selector(scrollToNextItem) userInfo:nil repeats:YES];
+    self.timer = [NSTimer timerWithTimeInterval:duration target:self selector:@selector(scrollToNextItem) userInfo:nil repeats:YES];
     self.duration = duration;
     [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
@@ -381,5 +386,11 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     });
     
     return [self sg_dequeueReusableCellWithReuseIdentifier:@"_SG_Infinite_View_Cell_ID"];
+}
+
+// 获取当前的显示 视图或cell
+- (UIView *)currentVisiableView {
+    UICollectionViewCell *cell = [_collectionView visibleCells].firstObject;
+    return [cell.contentView.subviews firstObject];
 }
 @end
