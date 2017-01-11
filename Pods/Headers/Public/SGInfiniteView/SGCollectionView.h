@@ -1,1 +1,0 @@
-../../../SGInfiniteView/SGInfiniteView/SGCollectionView.h
