@@ -13,6 +13,7 @@
 		84B66E8E1E037F4A00DA65E5 /* SGCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B66E891E037F4A00DA65E5 /* SGCollectionView.m */; };
 		84B66E8F1E037F4A00DA65E5 /* SGInfiniteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B66E8B1E037F4A00DA65E5 /* SGInfiniteView.m */; };
 		84B66E901E037F4A00DA65E5 /* SGInfiniteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B66E8D1E037F4A00DA65E5 /* SGInfiniteViewCell.m */; };
+		84D8FF601E0FB26000700243 /* SGSegementTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D8FF5F1E0FB26000700243 /* SGSegementTileView.m */; };
 		A7EAE4101DDF336D002EAC72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EAE40F1DDF336D002EAC72 /* main.m */; };
 		A7EAE4131DDF336D002EAC72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EAE4121DDF336D002EAC72 /* AppDelegate.m */; };
 		A7EAE41B1DDF336D002EAC72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7EAE41A1DDF336D002EAC72 /* Assets.xcassets */; };
@@ -39,6 +40,8 @@
 		84B66E8B1E037F4A00DA65E5 /* SGInfiniteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGInfiniteView.m; sourceTree = "<group>"; };
 		84B66E8C1E037F4A00DA65E5 /* SGInfiniteViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGInfiniteViewCell.h; sourceTree = "<group>"; };
 		84B66E8D1E037F4A00DA65E5 /* SGInfiniteViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGInfiniteViewCell.m; sourceTree = "<group>"; };
+		84D8FF5E1E0FB26000700243 /* SGSegementTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSegementTileView.h; sourceTree = "<group>"; };
+		84D8FF5F1E0FB26000700243 /* SGSegementTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSegementTileView.m; sourceTree = "<group>"; };
 		916EEF96E8BC409F25B18AE7 /* libPods-InfiniteViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InfiniteViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7EAE40B1DDF336D002EAC72 /* InfiniteViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7EAE40F1DDF336D002EAC72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -102,6 +105,8 @@
 				84B66E891E037F4A00DA65E5 /* SGCollectionView.m */,
 				84B66E8A1E037F4A00DA65E5 /* SGInfiniteView.h */,
 				84B66E8B1E037F4A00DA65E5 /* SGInfiniteView.m */,
+				84D8FF5E1E0FB26000700243 /* SGSegementTileView.h */,
+				84D8FF5F1E0FB26000700243 /* SGSegementTileView.m */,
 				84B66E8C1E037F4A00DA65E5 /* SGInfiniteViewCell.h */,
 				84B66E8D1E037F4A00DA65E5 /* SGInfiniteViewCell.m */,
 			);
@@ -318,6 +323,7 @@
 			files = (
 				84B66E7C1E037BBA00DA65E5 /* SGReuseInfiniteViewCell.m in Sources */,
 				A7EAE4321DDF39E8002EAC72 /* BaseViewController.m in Sources */,
+				84D8FF601E0FB26000700243 /* SGSegementTileView.m in Sources */,
 				A7EAE4351DDF3A05002EAC72 /* FirstViewController.m in Sources */,
 				A7EAE4291DDF33EC002EAC72 /* RootTableViewController.m in Sources */,
 				84B66E901E037F4A00DA65E5 /* SGInfiniteViewCell.m in Sources */,

@@ -54,11 +54,19 @@
 /***  轮播到下一个视图 **/
 - (void)scrollToNextItem;
 
+
+/** 跳转到指定索引的视图 */
+- (void)scrollToIndexItem:(NSInteger)index anima:(BOOL)anima;
+
 /** 跳转到指定索引的视图 */
 - (void)scrollToIndexItem:(NSInteger)index;
 
+
 /** 获取当前显示view的索引 */
 - (NSInteger)indexForCurrentView;
+
+/** 获取当前显示view 也可能SGInfiniteViewCell */
+- (UIView *)currentVisiableView;
 
 /** 手动刷新数据源 */
 - (void)sg_reloadData;

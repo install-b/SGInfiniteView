@@ -116,14 +116,19 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 }
 
 - (void)scrollToIndexItem:(NSInteger)index {
-    
+    [self scrollToIndexItem:index anima:YES];
+}
+
+
+- (void)scrollToIndexItem:(NSInteger)index anima:(BOOL)anima {
     if (self.viewCount < 1 || index < 0) {
         return;
     }
     // 计算索引
     index = [self scrollToItemIndexWithIndex:index % self.viewCount];
     
-    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:anima];
+
 }
 
 - (void)sg_reloadData {
@@ -381,5 +386,11 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     });
     
     return [self sg_dequeueReusableCellWithReuseIdentifier:@"_SG_Infinite_View_Cell_ID"];
+}
+
+// 获取当前的显示 视图或cell
+- (UIView *)currentVisiableView {
+    UICollectionViewCell *cell = [_collectionView visibleCells].firstObject;
+    return [cell.contentView.subviews firstObject];
 }
 @end
