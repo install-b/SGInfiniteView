@@ -35,7 +35,7 @@
     
     SGInfiniteViewCell *cell = [infiniteView sg_dequeueReusableCellWithReuseIdentifier:@"test"];
     cell.backgroundColor = [UIColor colorWithWhite:(index + 1) / 6.0 alpha:1];
-    NSLog(@"%@",cell);
+    //NSLog(@"%@",cell);
     return cell;
 }
 @end

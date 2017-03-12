@@ -84,13 +84,13 @@
 
 - (void)btnClick:(UIButton *)sender {
     sender.selected = !sender.selected;
-    //sender.selected ? [self.lunboView startTimerScrollWithDuration:2.0f] : [self.lunboView stopTimer];
-    static NSInteger index = 0;
-    index += 1;
-    if (index >= 3) {
-        index = 0;
-    }
-    [self.lunboView scrollToIndexItem:index anima:NO];
+    sender.selected ? [self.lunboView startTimerScrollWithDuration:2.0f] : [self.lunboView stopTimer];
+//    static NSInteger index = 0;
+//    index += 1;
+//    if (index >= 3) {
+//        index = 0;
+//    }
+//    [self.lunboView scrollToIndexItem:index anima:YES];
 }
 
 #pragma mark - 这个方法必须调用
