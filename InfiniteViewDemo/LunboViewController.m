@@ -8,14 +8,14 @@
 
 #import "LunboViewController.h"
 #import "SGInfiniteView.h"
-@interface LunboViewController () <SGInfiniteViewDatasource>
+@interface LunboViewController () <SGInfiniteViewDatasource,SGInfiniteViewDelegte>
 
 @property(nonatomic, weak) SGInfiniteView *lunboView;
 
 @property(nonatomic,strong) NSArray *dataSource;
 
 @end
-
+#define sourceCount 4
 @implementation LunboViewController
 #pragma mark - lazy load
 - (NSArray *)dataSource {
@@ -23,9 +23,9 @@
     if (!_dataSource) {
         // 假数据
         NSMutableArray *arrM = [NSMutableArray array];
-        for (NSInteger i = 0; i < 3; i++) {
+        for (NSInteger i = 0; i < sourceCount; i++) {
             UIView *view = [[UIView alloc] init];
-            view.backgroundColor = [UIColor colorWithWhite: (i + 1) / 5.0 alpha:1.0];
+            view.backgroundColor = [UIColor colorWithWhite: (i + 1) / 8.0 alpha:1.0];
             [arrM addObject:view];
         }
         _dataSource = arrM;
@@ -50,6 +50,7 @@
     lonboView.pageMargin = 10;
     lonboView.backgroundColor = [UIColor redColor];
     lonboView.dataSource = self;
+    lonboView.delegate = self;
     
     [self.view addSubview:lonboView];
     
@@ -77,20 +78,32 @@
 }
 
 - (UIView *)viewForInfiniteSlideView:(SGInfiniteView *)infiniteView inIndex:(NSInteger)index {
-    return self.dataSource[index];
+    UIView *view = self.dataSource[index];
+    NSLog(@"VIEW--INDEX:%zd  %@",index,view);
+    return view;
 }
 
+#pragma mark - SGInfiniteViewDelegate
+/** 已经展示了第index 视图 */
+- (void)viewForInfiniteView:(SGInfiniteView *)infiniteView didShowIndex:(NSInteger)index {
+    NSLog(@"DID_SHOW_%zd",index);
+}
+
+/** 将要展示了第index 视图 */
+- (void)viewForInfiniteView:(SGInfiniteView *)infiniteView willShowIndex:(NSInteger)index {
+    NSLog(@"WILL_SHOW_%zd",index);
+}
 #pragma mark - clicks
 
 - (void)btnClick:(UIButton *)sender {
-    sender.selected = !sender.selected;
-    sender.selected ? [self.lunboView startTimerScrollWithDuration:2.0f] : [self.lunboView stopTimer];
-//    static NSInteger index = 0;
-//    index += 1;
-//    if (index >= 3) {
-//        index = 0;
-//    }
-//    [self.lunboView scrollToIndexItem:index anima:YES];
+//    sender.selected = !sender.selected;
+//    sender.selected ? [self.lunboView startTimerScrollWithDuration:2.0f] : [self.lunboView stopTimer];
+    static NSInteger index = 0;
+    index += 1;
+    if (index >= sourceCount) {
+        index = 0;
+    }
+    [self.lunboView scrollToIndexItem:index anima:YES];
 }
 
 #pragma mark - 这个方法必须调用

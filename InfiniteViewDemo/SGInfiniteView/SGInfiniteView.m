@@ -10,7 +10,7 @@
 #import "SGCollectionView.h"
 
 //#define _minCount 3
-
+#define crurren_view_index (indexPath.item + self.viewCount - _minCount) % self.viewCount
 @interface SGInfiniteView () <UICollectionViewDataSource, UICollectionViewDelegate>
 {
     NSUInteger _minCount;
@@ -163,6 +163,9 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     if (self.viewCount < 1) {
         return 0;
     }
+    if (_minCount == 0) {
+        return index;
+    }
     static NSInteger itemIndex;
     NSInteger viewCount = self.viewCount;
     // 获取当前collection索引
@@ -222,7 +225,9 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
         !reuseView.identifier ? : [self.reusePool addObject:reuseView]; // 加入缓存池 没有标识的不加入缓存池
     }
     [reuseView removeFromSuperview];
-    [cell.contentView addSubview:[self currentViewInIndex:indexPath.item % self.viewCount]];
+    
+//    [cell.contentView addSubview:[self currentViewInIndex:indexPath.item % self.viewCount]];
+    [cell.contentView addSubview:[self currentViewInIndex:crurren_view_index]];
     return cell;
 }
 
@@ -231,8 +236,8 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     [self.classDict setObject:cellClass forKey:reuseId];
 }
 
-- (SGInfiniteViewCell *)sg_dequeueReusableCellWithReuseIdentifier:(NSString *)identifier {
-    __block NSString *ID = identifier;
+- (SGInfiniteViewCell *)sg_dequeueReusableCellWithReuseIdentifier:(NSString *)ID {
+    //NSString *ID = identifier;
     __block SGInfiniteViewCell *cell = nil;
 
     [_reusePool enumerateObjectsUsingBlock:^(id  _Nonnull obj, BOOL * _Nonnull stop) {
@@ -248,7 +253,7 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
         return cell;
     }
     
-    return [self creatCellByReuseId:identifier]; // 没有就根据标识创建新的
+    return [self creatCellByReuseId:ID]; // 没有就根据标识创建新的
 }
 - (SGInfiniteViewCell *)creatCellByReuseId:(NSString *)reuseId {
     id cellClass = _classDict[reuseId];
@@ -323,13 +328,12 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     self.currentViewIndex = (NSInteger)(collectionView.contentOffset.x / collectionView.frame.size.width +  self.viewCount - _minCount) % self.viewCount;
     // 底层要跳转的item
     //NSInteger newItem = self.viewCount + self.currentViewIndex;
-    
-     NSInteger newItem = _minCount + self.currentViewIndex;
-    
-    
-    // 不使用动画效果把scrollView拉回到中间
-    [collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:newItem inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
-   
+    if (_minCount) {
+        NSInteger newItem = _minCount + self.currentViewIndex;
+        
+        // 不使用动画效果把scrollView拉回到中间
+        [collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:newItem inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    }
     // 通知代理刚刚已经展示的view索引值
     if ([self.delegate respondsToSelector:@selector(viewForInfiniteView:didShowIndex:)]) {
         [self.delegate viewForInfiniteView:self didShowIndex:self.currentViewIndex];

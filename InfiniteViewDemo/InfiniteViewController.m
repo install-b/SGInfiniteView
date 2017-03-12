@@ -63,6 +63,7 @@
     [infiniteView setPageMargin:20];
     infiniteView.dataSource = self;
     infiniteView.delegate = self;
+    //infiniteView.infinite = NO;
     
     self.infiniteView = infiniteView;
     [self.view addSubview:infiniteView];
