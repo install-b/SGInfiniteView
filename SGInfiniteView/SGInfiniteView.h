@@ -42,6 +42,9 @@
 /** delegate（代理） */
 @property (nonatomic,weak) id <SGInfiniteViewDelegte> delegate;
 
+/** 是否需要无限循环滚动 (默认为YES,如果不需要无限循环可以传NO) */
+- (void)setInfinite:(BOOL)isInfinite;
+
 /** 注册cell */
 - (void)sg_registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)reuseId;
 

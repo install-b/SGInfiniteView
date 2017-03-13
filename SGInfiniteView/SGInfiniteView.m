@@ -9,7 +9,13 @@
 #import "SGInfiniteView.h"
 #import "SGCollectionView.h"
 
+//#define _minCount 3
+#define crurren_view_index (indexPath.item + self.viewCount - _minCount) % self.viewCount
 @interface SGInfiniteView () <UICollectionViewDataSource, UICollectionViewDelegate>
+{
+    NSUInteger _minCount;
+}
+
 /** laout布局 重新发生尺寸变化时layout 的itemsize 也要发生改变 */
 @property (nonatomic,strong) UICollectionViewFlowLayout *layout;
 
@@ -71,10 +77,14 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     [super layoutSubviews];
     _collectionView.frame = self.bounds;
     self.layout.itemSize = _collectionView.frame.size;
-    if (self.viewCount < 3) {
+    if (self.viewCount < 1) {
         return;
     }
-    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentViewIndex + self.viewCount inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+//    if (self.viewCount < _minCount) {
+//        return;
+//    }
+    //[_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentViewIndex + self.viewCount inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentViewIndex + _minCount inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
 }
 
 - (void)dealloc {
@@ -83,6 +93,7 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 }
 #pragma mark - 初始化
 - (void)setup {
+    _minCount = 3;
     self.layout.itemSize = self.bounds.size;
     SGCollectionView *collectionView = [[SGCollectionView alloc] initWithFrame:self.bounds collectionViewLayout:self.layout];
     
@@ -109,10 +120,16 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     self.layout.itemSize = _collectionView.frame.size;
     [self.collectionView reloadData];
 }
-
+// 设置是否需要无限滚动
+- (void)setInfinite:(BOOL)isInfinite {
+    _minCount = isInfinite ? 3 : 0;
+    [self sg_reloadData];
+}
 #pragma mark - 接口方法
 - (void)scrollToNextItem {
-    [self scrollToIndexItem:self.currentViewIndex +1];
+    
+    NSInteger nextItem = ((self.currentViewIndex + self.viewCount) - _minCount) % self.viewCount + 1;
+    [self scrollToIndexItem:nextItem];
 }
 
 - (void)scrollToIndexItem:(NSInteger)index {
@@ -126,9 +143,10 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     }
     // 计算索引
     index = [self scrollToItemIndexWithIndex:index % self.viewCount];
+    //index = [self scrollToItemIndexWithIndex:index];
     
     [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:anima];
-    
+
 }
 
 - (void)sg_reloadData {
@@ -139,35 +157,58 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 #pragma mark - 计算
 - (NSInteger)scrollToItemIndexWithIndex:(NSInteger)index {
     
-    if (self.viewCount < 3) {
+//    if (self.viewCount < _minCount) {
+//        return index;
+//    }
+    if (self.viewCount < 1) {
+        return 0;
+    }
+    if (_minCount == 0) {
         return index;
     }
     static NSInteger itemIndex;
+    NSInteger viewCount = self.viewCount;
     // 获取当前collection索引
     itemIndex = self.currentItemIndex;
     
     // 从first --> last 情况
-    if (index == self.viewCount - 1 && itemIndex == self.viewCount) {
-        return index;
+//    if (index == self.viewCount - 1 && itemIndex == self.viewCount) {
+//        return index;
+//    }
+    
+    if ((index + 1) % viewCount == 0 && (itemIndex == _minCount)) {
+        return _minCount - 1;
     }
     
     // 从last --> first 情况
-    if (index == 0 && itemIndex % (self.viewCount) == self.viewCount - 1) {
-        if (itemIndex + 1 >= self.itemsCount) {
-            return self.viewCount;
-        }
-        return itemIndex + 1;
+//    if (index == 0 && itemIndex % (self.viewCount) == self.viewCount - 1) {
+//        if (itemIndex + 1 >= self.itemsCount) {
+//            return self.viewCount;
+//        }
+//        return itemIndex + 1;
+//    }
+    if (index % viewCount == 0 && (itemIndex - _minCount + 1) % viewCount == 0) {
+        return viewCount + _minCount;
     }
     
     // 在不同区间跳转 防止夸区间跳转出现闪动
-    if (itemIndex >= self.viewCount && itemIndex < self.viewCount * 2) {
-        return  self.viewCount + index;
+//    if (itemIndex >= self.viewCount && itemIndex < self.viewCount * 2) {
+//        return  self.viewCount + index;
+//    }
+    
+    if (itemIndex >= _minCount && itemIndex < viewCount + _minCount) {
+        return index + _minCount;
     }
     
-    if(itemIndex >= self.viewCount * 2) {
-        return self.viewCount * 2 + index;
+//    if(itemIndex >= self.viewCount * 2) {
+//        return self.viewCount * 2 + index;
+//    }
+    
+    if (itemIndex >= viewCount + _minCount && index < _minCount) {
+        return viewCount + _minCount + index;
     }
-    return index;
+    
+    return index + _minCount;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -184,7 +225,9 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
         !reuseView.identifier ? : [self.reusePool addObject:reuseView]; // 加入缓存池 没有标识的不加入缓存池
     }
     [reuseView removeFromSuperview];
-    [cell.contentView addSubview:[self currentViewInIndex:indexPath.item % self.viewCount]];
+    
+//    [cell.contentView addSubview:[self currentViewInIndex:indexPath.item % self.viewCount]];
+    [cell.contentView addSubview:[self currentViewInIndex:crurren_view_index]];
     return cell;
 }
 
@@ -193,10 +236,10 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     [self.classDict setObject:cellClass forKey:reuseId];
 }
 
-- (SGInfiniteViewCell *)sg_dequeueReusableCellWithReuseIdentifier:(NSString *)identifier {
-    __block NSString *ID = identifier;
+- (SGInfiniteViewCell *)sg_dequeueReusableCellWithReuseIdentifier:(NSString *)ID {
+    //NSString *ID = identifier;
     __block SGInfiniteViewCell *cell = nil;
-    
+
     [_reusePool enumerateObjectsUsingBlock:^(id  _Nonnull obj, BOOL * _Nonnull stop) {
         
         if ([[(SGInfiniteViewCell *)obj identifier] isEqualToString:ID]) { // 缓存池中找到cell
@@ -210,7 +253,7 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
         return cell;
     }
     
-    return [self creatCellByReuseId:identifier]; // 没有就根据标识创建新的
+    return [self creatCellByReuseId:ID]; // 没有就根据标识创建新的
 }
 - (SGInfiniteViewCell *)creatCellByReuseId:(NSString *)reuseId {
     id cellClass = _classDict[reuseId];
@@ -219,7 +262,7 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
         Class class = cellClass;
         cell = [(SGInfiniteViewCell *)[class alloc] init];
         cell.identifier = reuseId;
-        
+    
         return cell;
     }
     return cell; // 没有就返回空
@@ -227,7 +270,7 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 
 #pragma mark - UICollectionViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    // 代理数据源为0或空时处理 （代理不需要监听时直接返回）
+   // 代理数据源为0或空时处理 （代理不需要监听时直接返回）
     if (![self.delegate respondsToSelector:@selector(viewForInfiniteView:willShowIndex:)]
         || self.viewCount < 1 ) {
         return;
@@ -251,13 +294,21 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     
     static NSInteger willShowIndex;
     
-    // 计算索引值
-    willShowIndex = (NSInteger)((collectionView.contentOffset.x + collectionView.frame.size.width * .5) / collectionView.frame.size.width) % self.viewCount;
+//    // 计算索引值
+//    willShowIndex = (NSInteger)((collectionView.contentOffset.x + collectionView.frame.size.width * .5) / collectionView.frame.size.width) % self.viewCount;
+//    
+//    if (willShowIndex == self.currentViewIndex ||                 // 已经展示的就不从新通知了
+//        willShowIndex >= self.viewCount){  // 越界容错处理
+//        return;
+//    }
+    
+    willShowIndex = (NSInteger)((collectionView.contentOffset.x + collectionView.frame.size.width * .5) / collectionView.frame.size.width + self.viewCount - _minCount) % self.viewCount ;
     
     if (willShowIndex == self.currentViewIndex ||                 // 已经展示的就不从新通知了
         willShowIndex >= self.viewCount){  // 越界容错处理
         return;
     }
+
     
     self.currentViewIndex = willShowIndex;
     // 告诉代理将要展示的view
@@ -267,17 +318,22 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 
 // 核心方法（实现无限滚动核心代码）
 - (void)collectionViewDidEndScroll:(UICollectionView *)collectionView {
-    
-    if (self.viewCount < 3) {  // 代理数据源为个数不足3 时处理
+    if (self.viewCount < 1) {
         return;
     }
+//    if (self.viewCount < _minCount) {  // 代理数据源为个数不足3 时处理
+//        return;
+//    }
     
-    self.currentViewIndex = (NSInteger)(collectionView.contentOffset.x / collectionView.frame.size.width) % self.viewCount;
+    self.currentViewIndex = (NSInteger)(collectionView.contentOffset.x / collectionView.frame.size.width +  self.viewCount - _minCount) % self.viewCount;
     // 底层要跳转的item
-    NSInteger newItem = self.viewCount + self.currentViewIndex;
-    // 不使用动画效果把scrollView拉回到中间
-    [collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:newItem inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
-    
+    //NSInteger newItem = self.viewCount + self.currentViewIndex;
+    if (_minCount) {
+        NSInteger newItem = _minCount + self.currentViewIndex;
+        
+        // 不使用动画效果把scrollView拉回到中间
+        [collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:newItem inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    }
     // 通知代理刚刚已经展示的view索引值
     if ([self.delegate respondsToSelector:@selector(viewForInfiniteView:didShowIndex:)]) {
         [self.delegate viewForInfiniteView:self didShowIndex:self.currentViewIndex];
@@ -305,7 +361,7 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     if (_timer) {
         [self suspandTimer];
     }
-    self.timer = [NSTimer timerWithTimeInterval:duration target:self selector:@selector(scrollToNextItem) userInfo:nil repeats:YES];
+     self.timer = [NSTimer timerWithTimeInterval:duration target:self selector:@selector(scrollToNextItem) userInfo:nil repeats:YES];
     self.duration = duration;
     [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
 }
@@ -359,10 +415,10 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
         return 0;
     }
     // 不足3个循环轮播会出错
-    if (self.viewCount < 3) {
-        return self.viewCount;
-    }
-    return self.viewCount * 3;
+//    if (self.viewCount < _minCount) {
+//        return self.viewCount;
+//    }
+    return self.viewCount + 2 * _minCount;
 }
 // 获取当前视图（展示给用户的界面）索引
 - (NSInteger)indexForCurrentView {
