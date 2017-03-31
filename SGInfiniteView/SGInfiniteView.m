@@ -125,6 +125,9 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     _minCount = isInfinite ? 3 : 0;
     [self sg_reloadData];
 }
+- (void)setScrollEnable:(BOOL)enable {
+    self.collectionView.scrollEnabled = enable;
+}
 #pragma mark - 接口方法
 - (void)scrollToNextItem {
     

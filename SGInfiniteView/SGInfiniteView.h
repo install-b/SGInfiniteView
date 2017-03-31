@@ -45,6 +45,13 @@
 /** 是否需要无限循环滚动 (默认为YES,如果不需要无限循环可以传NO) */
 - (void)setInfinite:(BOOL)isInfinite;
 
+/**
+ 设置是否可以滑动 默认是可以滑动
+ 
+ @param enable 当设置为NO的时候不可以滑动
+ */
+- (void)setScrollEnable:(BOOL)enable;
+
 /** 注册cell */
 - (void)sg_registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)reuseId;
 
