@@ -27,11 +27,7 @@ SGInfiniteView is an infinite scroll view control with unlimited switching back 
 
   s.source       = { :git => "https://github.com/install-b/SGInfiniteView.git", :tag => s.version }
 
-
   s.source_files  = "SGInfiniteView/*.{h,m}"
-
-  s.public_header_files = "GInfiniteView/*.h"
-
 
   s.framework  = "UIKit"
   
