@@ -7,10 +7,10 @@
 //
 
 #import "LunboViewController.h"
-#import "SGInfiniteView.h"
+#import "SGAutoInfiniteView.h"
 @interface LunboViewController () <SGInfiniteViewDatasource,SGInfiniteViewDelegte>
 
-@property(nonatomic, weak) SGInfiniteView *lunboView;
+@property(nonatomic, weak) SGAutoInfiniteView *lunboView;
 
 @property(nonatomic,strong) NSArray *dataSource;
 
@@ -39,13 +39,14 @@
     [self setUp];
     // 不让导航控制器下的scrollView 下移
     self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.lunboView setAutoAddjustContent:NO];
 }
 #pragma mark - 初始化
 - (void)setUp {
     
     CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
     
-    SGInfiniteView *lonboView = [[SGInfiniteView alloc] initWithFrame:CGRectMake(0, 100, screenW, 150)];
+    SGAutoInfiniteView *lonboView = [[SGAutoInfiniteView alloc] initWithFrame:CGRectMake(0, 100, screenW, 150)];
     self.lunboView = lonboView;
     lonboView.pageMargin = 10;
     lonboView.backgroundColor = [UIColor redColor];
@@ -79,7 +80,7 @@
 
 - (UIView *)viewForInfiniteSlideView:(SGInfiniteView *)infiniteView inIndex:(NSInteger)index {
     UIView *view = self.dataSource[index];
-    NSLog(@"VIEW--INDEX:%zd  %@",index,view);
+    //NSLog(@"VIEW--INDEX:%zd  %@",index,view);
     return view;
 }
 
@@ -96,20 +97,14 @@
 #pragma mark - clicks
 
 - (void)btnClick:(UIButton *)sender {
-//    sender.selected = !sender.selected;
-//    sender.selected ? [self.lunboView startTimerScrollWithDuration:2.0f] : [self.lunboView stopTimer];
-    static NSInteger index = 0;
-    index += 1;
-    if (index >= sourceCount) {
-        index = 0;
-    }
-    [self.lunboView scrollToIndexItem:index anima:YES];
+    sender.selected = !sender.selected;
+    sender.selected ? [self.lunboView startAutoScrollWithDuration:2.0f] : [self.lunboView stopAutoScroll];
 }
 
 #pragma mark - 这个方法必须调用
 - (void)viewWillDisappear:(BOOL)animated {
     // 如果开启了定时器就必须在控制器销毁之前结束定时器 不实现该方法 控制器销毁时会发生未知崩溃 由于timer在runRoop中不会被销毁 所以导致timer定时器方法会找不到
-    [self.lunboView stopTimer];
+    [self.lunboView stopAutoScroll];
 }
 
 @end

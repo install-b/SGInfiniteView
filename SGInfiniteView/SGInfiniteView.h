@@ -25,6 +25,9 @@
 /** ZSGInfiniteSlideView 代理源协议 */
 @protocol SGInfiniteViewDelegte <NSObject>
 @optional
+/** 视图被添加到infiniteview */
+- (void)viewForInfiniteView:(SGInfiniteView *)infiniteView didAddCellSubview:(UIView *)subView atIndex:(NSInteger)viewIndex ;
+
 /** 已经展示了第index 视图 */
 - (void)viewForInfiniteView:(SGInfiniteView *)infiniteView didShowIndex:(NSInteger)index;
 
@@ -32,6 +35,7 @@
 - (void)viewForInfiniteView:(SGInfiniteView *)infiniteView willShowIndex:(NSInteger)index;
 
 @end
+
 
 
 @interface SGInfiniteView : UIView
@@ -42,6 +46,12 @@
 /** delegate（代理） */
 @property (nonatomic,weak) id <SGInfiniteViewDelegte> delegate;
 
+/** 手动刷新数据源 */
+- (void)sg_reloadData;
+
+// setter and getter
+@property UIEdgeInsets contentIntet;
+
 /** 是否需要无限循环滚动 (默认为YES,如果不需要无限循环可以传NO) */
 - (void)setInfinite:(BOOL)isInfinite;
 
@@ -51,19 +61,20 @@
  @param enable 当设置为NO的时候不可以滑动
  */
 - (void)setScrollEnable:(BOOL)enable;
+/** 设置分页间距（默认为0） */
+- (void)setPageMargin:(CGFloat)pageMargin;
+/** 设置是否自动调节自动偏移 */
+- (void)setAutoAddjustContent:(BOOL)isAddjust;
 
 /** 注册cell */
 - (void)sg_registerClass:(Class)cellClass forCellWithReuseIdentifier:(NSString *)reuseId;
-
 /** 从缓存池中找cell */
 - (SGInfiniteViewCell *)sg_dequeueReusableCellWithReuseIdentifier:(NSString *)identifier;
 
-/** 设置分页间距（默认为0） */
-- (void)setPageMargin:(CGFloat)pageMargin;
+
 
 /***  轮播到下一个视图 **/
 - (void)scrollToNextItem;
-
 
 /** 跳转到指定索引的视图 */
 - (void)scrollToIndexItem:(NSInteger)index anima:(BOOL)anima;
@@ -71,20 +82,30 @@
 /** 跳转到指定索引的视图 */
 - (void)scrollToIndexItem:(NSInteger)index;
 
-
-/** 获取当前显示view的索引 */
+/**
+ * 获取当前显示view的索引
+ */
 - (NSInteger)indexForCurrentView;
-
-/** 获取当前显示view 也可能SGInfiniteViewCell */
+/**
+ * 获取当前显示view 也可能SGInfiniteViewCell
+ */
 - (UIView *)currentVisiableView;
+/**
+ 根据索引获取当前可见的视图
 
-/** 手动刷新数据源 */
-- (void)sg_reloadData;
+ @param index 索引
+ @return 当前可见的索引对应的视图  索引越界或者对应的索引视图不可见  返回为nil
+ */
+- (UIView *)visibaleViewForIndex:(NSInteger)index;
 
-/** 开启定时器 滚动 duration:滚动时间间隔 （注意：一旦有开启就要有结束否则会发生错误）*/
-- (void)startTimerScrollWithDuration:(NSTimeInterval)duration;
 
-/** 停止定时器（注意：一旦开启了定时器就必须在控制器销毁之前停止它） */
-- (void)stopTimer;
+
+/**
+ 重用的视图从父控件移除
+ -- 子类重写可以做一些特定重用机制
+
+ @param reuseView 被移除的视图
+ */
+- (void)didRemoveReuseView:(UIView *)reuseView;
 
 @end
