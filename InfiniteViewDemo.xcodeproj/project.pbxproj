@@ -12,8 +12,8 @@
 		84B66E7C1E037BBA00DA65E5 /* SGReuseInfiniteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B66E7B1E037BBA00DA65E5 /* SGReuseInfiniteViewCell.m */; };
 		84D8FF601E0FB26000700243 /* SGSegementTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D8FF5F1E0FB26000700243 /* SGSegementTileView.m */; };
 		A701C48E20CFBB24002E31B7 /* SGAutoInfiniteView.m in Sources */ = {isa = PBXBuildFile; fileRef = A701C48C20CFBB23002E31B7 /* SGAutoInfiniteView.m */; };
-		A738D5F1211D89F700165283 /* SGBaseToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A738D5F0211D89F700165283 /* SGBaseToolBar.m */; };
-		A738D5F4211D8AA600165283 /* SGSwitchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A738D5F3211D8AA600165283 /* SGSwitchBar.m */; };
+		A738D5FA211D9DEF00165283 /* SGBaseToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A738D5F6211D9DEF00165283 /* SGBaseToolBar.m */; };
+		A738D5FB211D9DEF00165283 /* SGSwitchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A738D5F7211D9DEF00165283 /* SGSwitchBar.m */; };
 		A7EAE4101DDF336D002EAC72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EAE40F1DDF336D002EAC72 /* main.m */; };
 		A7EAE4131DDF336D002EAC72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EAE4121DDF336D002EAC72 /* AppDelegate.m */; };
 		A7EAE41B1DDF336D002EAC72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7EAE41A1DDF336D002EAC72 /* Assets.xcassets */; };
@@ -42,10 +42,10 @@
 		916EEF96E8BC409F25B18AE7 /* libPods-InfiniteViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InfiniteViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A701C48C20CFBB23002E31B7 /* SGAutoInfiniteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGAutoInfiniteView.m; path = SGInfiniteView/SGAutoInfiniteView.m; sourceTree = SOURCE_ROOT; };
 		A701C48D20CFBB24002E31B7 /* SGAutoInfiniteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGAutoInfiniteView.h; path = SGInfiniteView/SGAutoInfiniteView.h; sourceTree = SOURCE_ROOT; };
-		A738D5EF211D89F700165283 /* SGBaseToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGBaseToolBar.h; sourceTree = "<group>"; };
-		A738D5F0211D89F700165283 /* SGBaseToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGBaseToolBar.m; sourceTree = "<group>"; };
-		A738D5F2211D8AA600165283 /* SGSwitchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGSwitchBar.h; sourceTree = "<group>"; };
-		A738D5F3211D8AA600165283 /* SGSwitchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGSwitchBar.m; sourceTree = "<group>"; };
+		A738D5F6211D9DEF00165283 /* SGBaseToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBaseToolBar.m; sourceTree = "<group>"; };
+		A738D5F7211D9DEF00165283 /* SGSwitchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSwitchBar.m; sourceTree = "<group>"; };
+		A738D5F8211D9DEF00165283 /* SGSwitchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSwitchBar.h; sourceTree = "<group>"; };
+		A738D5F9211D9DEF00165283 /* SGBaseToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBaseToolBar.h; sourceTree = "<group>"; };
 		A7EAE40B1DDF336D002EAC72 /* InfiniteViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7EAE40F1DDF336D002EAC72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A7EAE4111DDF336D002EAC72 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -124,16 +124,16 @@
 			path = SGInfiniteView;
 			sourceTree = "<group>";
 		};
-		A738D5EE211D89D000165283 /* SGSwitchBar */ = {
+		A738D5F5211D9DEF00165283 /* SGSwitchBar */ = {
 			isa = PBXGroup;
 			children = (
-				A738D5EF211D89F700165283 /* SGBaseToolBar.h */,
-				A738D5F0211D89F700165283 /* SGBaseToolBar.m */,
-				A738D5F2211D8AA600165283 /* SGSwitchBar.h */,
-				A738D5F3211D8AA600165283 /* SGSwitchBar.m */,
+				A738D5F9211D9DEF00165283 /* SGBaseToolBar.h */,
+				A738D5F6211D9DEF00165283 /* SGBaseToolBar.m */,
+				A738D5F8211D9DEF00165283 /* SGSwitchBar.h */,
+				A738D5F7211D9DEF00165283 /* SGSwitchBar.m */,
 			);
 			path = SGSwitchBar;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		A7EAE4021DDF336D002EAC72 = {
 			isa = PBXGroup;
@@ -156,7 +156,7 @@
 		A7EAE40D1DDF336D002EAC72 /* InfiniteViewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				A738D5EE211D89D000165283 /* SGSwitchBar */,
+				A738D5F5211D9DEF00165283 /* SGSwitchBar */,
 				84B66E871E037F4A00DA65E5 /* SGInfiniteView */,
 				84B66E751E037A5400DA65E5 /* 视图重用 */,
 				A7EAE4261DDF33BF002EAC72 /* 无限滚动 */,
@@ -347,7 +347,7 @@
 				84B66E7C1E037BBA00DA65E5 /* SGReuseInfiniteViewCell.m in Sources */,
 				A7EAE4321DDF39E8002EAC72 /* BaseViewController.m in Sources */,
 				A7EC359D1E76F54B00116C91 /* SGInfiniteView.m in Sources */,
-				A738D5F4211D8AA600165283 /* SGSwitchBar.m in Sources */,
+				A738D5FB211D9DEF00165283 /* SGSwitchBar.m in Sources */,
 				A701C48E20CFBB24002E31B7 /* SGAutoInfiniteView.m in Sources */,
 				84D8FF601E0FB26000700243 /* SGSegementTileView.m in Sources */,
 				A7EAE4351DDF3A05002EAC72 /* FirstViewController.m in Sources */,
@@ -359,7 +359,7 @@
 				A7EAE4131DDF336D002EAC72 /* AppDelegate.m in Sources */,
 				A7EC359E1E76F54B00116C91 /* SGInfiniteViewCell.m in Sources */,
 				A7EAE4101DDF336D002EAC72 /* main.m in Sources */,
-				A738D5F1211D89F700165283 /* SGBaseToolBar.m in Sources */,
+				A738D5FA211D9DEF00165283 /* SGBaseToolBar.m in Sources */,
 				A7EAE42C1DDF35F5002EAC72 /* LunboViewController.m in Sources */,
 				84B66E791E037AB500DA65E5 /* SGReuseViewController.m in Sources */,
 			);
