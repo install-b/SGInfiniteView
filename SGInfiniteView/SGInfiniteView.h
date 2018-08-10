@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SGInfiniteViewCell.h"
-
+// pod 0.2.0 版本
 @class SGInfiniteView;
 
 /** ZSGInfiniteSlideView 数据源协议 */
@@ -45,6 +45,9 @@
 
 /** delegate（代理） */
 @property (nonatomic,weak) id <SGInfiniteViewDelegte> delegate;
+
+/* 偏移百分比 默认0.5  大于0 小于1 */
+@property (nonatomic,assign) CGFloat willShowOffsetPercent;
 
 /** 手动刷新数据源 */
 - (void)sg_reloadData;

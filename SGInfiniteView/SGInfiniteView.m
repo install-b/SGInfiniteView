@@ -15,18 +15,17 @@
     NSUInteger _minCount;
 }
 
-/** laout布局 重新发生尺寸变化时layout 的itemsize 也要发生改变 */
-@property (nonatomic,strong) UICollectionViewFlowLayout *layout;
-
 /** collectionView */
 @property (nonatomic,weak) SGCollectionView *collectionView;
 
 /** 滚动的实际上视图个数 */
 @property (nonatomic,assign) NSInteger viewCount;
 
+/* 上一次偏移量 */
+@property (nonatomic,assign) CGFloat lastEndScrollContentOffset;
+
 /** 当前现实索引的index */
 @property (nonatomic,assign) NSInteger currentViewIndex;
-
 
 /** 重用缓存池 */
 @property(nonatomic,strong) NSMutableSet *reusePool;
@@ -62,20 +61,19 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 // 重写frame
 - (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
-    _collectionView.frame = self.bounds;
-    self.layout.itemSize = _collectionView.frame.size;
+     CGRect bounds = self.bounds;
+    _collectionView.frame = bounds;
     [_collectionView reloadData];
 }
 
 // 此方法让视图刚好布局好之后 滚动到中间区域实现一开始右划也能无限滚动
 - (void)layoutSubviews {
     [super layoutSubviews];
-    _collectionView.frame = self.bounds;
-    self.layout.itemSize = _collectionView.frame.size;
+    CGRect bounds = self.bounds;
+    _collectionView.frame = bounds;
     // 校验
     if (self.viewCount < 1) return;
     
-
     [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentViewIndex + _minCount inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
 }
 
@@ -83,8 +81,9 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 #pragma mark - 初始化
 - (void)setup {
     _minCount = 3;
-    self.layout.itemSize = self.bounds.size;
-    SGCollectionView *collectionView = [[SGCollectionView alloc] initWithFrame:self.bounds collectionViewLayout:self.layout];
+    _willShowOffsetPercent = 0.5;
+    
+    SGCollectionView *collectionView = [[SGCollectionView alloc] initWithFrame:self.bounds];
     
     [self addSubview:collectionView];
     self.collectionView = collectionView;
@@ -110,8 +109,14 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 // 设置间距
 - (void)setPageMargin:(CGFloat)pageMargin {
     _collectionView.pageMargin = pageMargin;
-    self.layout.itemSize = _collectionView.frame.size;
+    //_collectionView.sg_layout.itemSize = _collectionView.bounds.size;
     [self.collectionView reloadData];
+}
+- (void)setWillShowOffsetPercent:(CGFloat)willShowOffsetPercent {
+    if (willShowOffsetPercent >= 1 || willShowOffsetPercent <= 0) {
+        willShowOffsetPercent = 0.5;
+    }
+    _willShowOffsetPercent = willShowOffsetPercent;
 }
 // 设置是否需要无限滚动
 - (void)setInfinite:(BOOL)isInfinite {
@@ -134,7 +139,8 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 - (void)p_collectionViewDidScroll:(UICollectionView *)collectionView {
     
     // 即将展示的index
-    NSInteger willShowIndex = (NSInteger)((collectionView.contentOffset.x + collectionView.frame.size.width * .5) / collectionView.frame.size.width + self.viewCount - _minCount) % self.viewCount ;
+    CGFloat offsetPercent = ((self.lastEndScrollContentOffset > collectionView.contentOffset.x) ? _willShowOffsetPercent : (1 - _willShowOffsetPercent));
+    NSInteger willShowIndex = (NSInteger)((collectionView.contentOffset.x + collectionView.frame.size.width * offsetPercent) / collectionView.frame.size.width + self.viewCount - _minCount) % self.viewCount ;
     
     if (willShowIndex == self.currentViewIndex ||                 // 已经展示的就不从新通知了
         willShowIndex >= self.viewCount){  // 越界容错处理
@@ -153,6 +159,7 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     // 越界处理
     if (self.viewCount < 1)  return;
     
+    self.lastEndScrollContentOffset = collectionView.contentOffset.x;
     //
     self.currentViewIndex = (NSInteger)(collectionView.contentOffset.x / collectionView.frame.size.width +  self.viewCount - _minCount) % self.viewCount;
     
@@ -265,8 +272,6 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 - (void)didAddCellSubview:(UIView *)subview atIndex:(NSInteger)index {
     
 }
-
-
 - (void)resetReuseCell:(UICollectionViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     SGInfiniteViewCell *reuseView = (SGInfiniteViewCell *)cell.contentView.subviews.lastObject;
     if ([reuseView isKindOfClass:[SGInfiniteViewCell class]]) {
@@ -320,22 +325,13 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
     SGInfiniteViewCell *cell = nil;
     if (cellClass) { // 根据注册类别 创建新的
         Class class = cellClass;
-        cell = [(SGInfiniteViewCell *)[class alloc] init];
-        cell.identifier = reuseId;
-    
+        cell = [(SGInfiniteViewCell *)[class alloc] initWithFrame:self.bounds reusedIdentifier:reuseId];
         return cell;
     }
     return cell; // 没有就返回空
 }
 #pragma mark - lazy load
-- (UICollectionViewFlowLayout *)layout {
-    if (!_layout) {
-        self.layout = [[UICollectionViewFlowLayout alloc] init];
-        self.layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        self.layout.minimumLineSpacing = 0;
-    }
-    return _layout;
-}
+
 - (NSMutableSet *)reusePool {
     if (!_reusePool) {
         _reusePool = [NSMutableSet set];
@@ -388,7 +384,13 @@ static NSString *ID = @"SG_InfiniteViewItemCell_ID";
 #pragma mark  user getter
 // 获取当前视图（展示给用户的界面）索引
 - (NSInteger)indexForCurrentView {
-    return (NSInteger)(self.collectionView.contentOffset.x / self.frame.size.width) % self.viewCount;
+    NSInteger number = (NSInteger)(self.collectionView.contentOffset.x / self.frame.size.width)  -_minCount;
+    if (number < 0) {
+        return number + _viewCount;
+    }else if (number >= _viewCount) {
+        return number - _viewCount;
+    }
+    return number;
 }
 // 获取当前的显示 视图或cell
 - (UIView *)currentVisiableView {

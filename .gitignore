@@ -17,6 +17,17 @@ DerivedData/
 !default.perspectivev3
 xcuserdata/
 
+
+.DS_Store
+.DS_Store?
+*.swp
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
 ## Other
 *.moved-aside
 *.xcuserstate

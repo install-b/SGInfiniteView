@@ -10,6 +10,15 @@
 
 @interface SGInfiniteViewCell : UIView
 /** reuseId */
-@property(nonatomic,copy) NSString *identifier;
+@property(nonatomic,copy,readonly) NSString *identifier;
+
+// 只能使用 重用cell identitfier
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
+
+// 构造方法
+- (instancetype)initWithFrame:(CGRect)frame
+             reusedIdentifier:(NSString *)identifier NS_REQUIRES_SUPER;
 
 @end

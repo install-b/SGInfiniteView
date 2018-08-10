@@ -10,6 +10,10 @@
 
 @implementation SGInfiniteViewCell
 
-
-
+- (instancetype)initWithFrame:(CGRect)frame reusedIdentifier:(NSString *)identifier {
+    if (self = [super initWithFrame:frame]) {
+        _identifier = identifier;
+    }
+    return self;
+}
 @end
