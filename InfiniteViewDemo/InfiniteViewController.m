@@ -12,12 +12,17 @@
 #import "ThirdViewController.h"
 
 #import "SGInfiniteView.h"
+#import "SGSwitchBar.h"
 
-@interface InfiniteViewController ()<SGInfiniteViewDelegte,SGInfiniteViewDatasource>
+
+#define kSafeAreaNavHeight (([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125,2436), [[UIScreen mainScreen] currentMode].size) : NO) ? 88 : 64)
+
+@interface InfiniteViewController () <SGInfiniteViewDelegte,SGInfiniteViewDatasource,SGSwitchBarDelegate>
 
 @property(nonatomic,weak) SGInfiniteView *infiniteView;
 
-@property(nonatomic,weak) UISegmentedControl *segmentC;
+/* 切换视图 */
+@property (nonatomic,weak) SGSwitchBar * switchBar;
 
 @end
 
@@ -46,39 +51,47 @@
     CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
     CGFloat screenH = [UIScreen mainScreen].bounds.size.height;
     
+    CGFloat navH = kSafeAreaNavHeight;
     // 初始化标题栏
-    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, screenW, 44)];
-    titleView.backgroundColor = [UIColor grayColor];
-    [self.view addSubview:titleView];
-    
-    UISegmentedControl *segmentC = [[UISegmentedControl alloc] initWithItems:@[@"first",@"second",@"third"]];
-    [segmentC addTarget:self action:@selector(segmentDidSelectItem:) forControlEvents:UIControlEventValueChanged];
-    segmentC.tintColor = [UIColor greenColor];
-    self.segmentC = segmentC;
-    segmentC.center = CGPointMake(screenW * 0.5, 22);
-    [titleView addSubview:segmentC];
+    CGRect switchRect = CGRectMake(0, navH, screenW, 44);
+    SGSwitchBar *switchBar = [[SGSwitchBar alloc] initWithFrame:switchRect];
+    switchBar.delegate = self;
+    switchBar.itemWidthMargin = screenW  / 3.0;
+    switchBar.indicatorH = 2.0f;
+    switchBar.indicatorColor = [UIColor darkGrayColor];
+    [switchBar reloadBtnWithTitles:@[@"first",@"second",@"third"]];
+    _switchBar = switchBar;
+    [self.view addSubview:switchBar];
     
     // 初始化无限滚动控件
-    SGInfiniteView *infiniteView = [[SGInfiniteView alloc] initWithFrame:CGRectMake(0, 44 + 64, screenW, screenH - 44)];
+    SGInfiniteView *infiniteView = [[SGInfiniteView alloc] initWithFrame:CGRectMake(0, 44 + navH, screenW, screenH - 44 - navH)];
     [infiniteView setPageMargin:20];
     infiniteView.dataSource = self;
     infiniteView.delegate = self;
-    //infiniteView.infinite = NO;
-    
+
     self.infiniteView = infiniteView;
     [self.view addSubview:infiniteView];
-    
-    // 获取当前控制器视图索引
-    [self.segmentC setSelectedSegmentIndex:[self.infiniteView indexForCurrentView]];
-}
-#pragma mark - clicks and events
-- (void)segmentDidSelectItem:(UISegmentedControl *)sender {
-    // 标题栏与控制器视图联动
-    [self.infiniteView scrollToIndexItem:sender.selectedSegmentIndex];
+
 }
 
-#pragma mark -
-#pragma mark SGInfiniteViewDatasource
+#pragma mark - SGSwitchBar delegate
+- (void)switchBar:(SGSwitchBar *)switchBar didSelectIndex:(NSUInteger)index {
+    [self.infiniteView scrollToIndexItem:index];
+}
+- (void)switchBar:(SGSwitchBar *)switchBar setUpButton:(UIButton *)btn atIndex:(NSUInteger)index {
+    [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateSelected];
+    [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+}
+#pragma mark - SGInfiniteViewDelegte
+- (void)viewForInfiniteView:(SGInfiniteView *)infiniteView willShowIndex:(NSInteger)index {
+    // 实时监听控制器视图滚动时让控制器视图与标题栏联动
+    [self.switchBar switchToInedx:index];
+}
+
+- (void)viewForInfiniteView:(SGInfiniteView *)infiniteView didShowIndex:(NSInteger)index {
+    // 停止滚动后控制器视图与标题栏联动
+}
+#pragma mark - SGInfiniteViewDatasource
 - (NSInteger)numberOfItemsForInfiniteSlideView:(SGInfiniteView *)infiniteView {
     // 返回控制器视图个数
     return  self.childViewControllers.count;
@@ -88,16 +101,6 @@
     // 返回控制器视图
     return self.childViewControllers[index].view;
 }
-#pragma mark -
-#pragma mark SGInfiniteViewDelegte
-- (void)viewForInfiniteView:(SGInfiniteView *)infiniteView willShowIndex:(NSInteger)index {
-     // 实时监听控制器视图滚动时让控制器视图与标题栏联动
-    [self.segmentC setSelectedSegmentIndex:index];
-}
 
-- (void)viewForInfiniteView:(SGInfiniteView *)infiniteView didShowIndex:(NSInteger)index {
-    // 停止滚动后控制器视图与标题栏联动
-    //[self.segmentC setSelectedSegmentIndex:index];
-}
 
 @end
