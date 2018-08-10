@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SGInfiniteView"
-  s.version      = "0.2.0"
+  s.version      = "0.2.1"
   s.summary      = "An iOS inifite scroll view"
 
   s.description  = <<-DESC
