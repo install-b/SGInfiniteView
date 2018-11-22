@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "SGInfiniteView"
-  s.version      = "0.2.1"
+  s.version      = "0.2.2"
   s.summary      = "An iOS inifite scroll view"
 
   s.description  = <<-DESC
@@ -28,7 +28,8 @@ SGInfiniteView is an infinite scroll view control with unlimited switching back 
   s.source       = { :git => "https://github.com/install-b/SGInfiniteView.git", :tag => s.version }
 
   s.source_files  = "SGInfiniteView/*.{h,m}"
-
+  s.public_header_files = "SGInfiniteView/*.h"
+  
   s.framework  = "UIKit"
   
 
